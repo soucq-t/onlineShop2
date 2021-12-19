@@ -9,84 +9,129 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane fx:id="tabFenster" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="847.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-  <tabs>
-    <Tab fx:id="tabKaeufer" text="Kaeufer">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="542.0" prefWidth="856.0">
-               <children>
-                  <ListView fx:id="lvSC" layoutX="393.0" layoutY="90.0" prefHeight="329.0" prefWidth="194.0" />
-                  <Text layoutX="423.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shopping Cart" wrappingWidth="133.33673095703125">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Text>
-                  <ChoiceBox fx:id="cbKategorie" layoutX="125.0" layoutY="18.0" prefHeight="26.0" prefWidth="211.0" />
-                  <ListView fx:id="lvWaren" layoutX="17.0" layoutY="55.0" prefHeight="364.0" prefWidth="353.0" />
-                  <Button fx:id="btnAdd" layoutX="40.0" layoutY="435.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="307.0" text=" add to Warenkorb">
-                     <font>
-                        <Font size="20.0" />
-                     </font></Button>
-                  <Button fx:id="btnDelete" layoutX="392.0" layoutY="421.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="delete" />
-                  <Button fx:id="btnPay" layoutX="395.0" layoutY="457.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="190.0" text="Pay">
-                     <font>
-                        <Font size="16.0" />
-                     </font></Button>
-                  <Button fx:id="btnDetails" layoutX="500.0" layoutY="421.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="details" />
-                  <TextField fx:id="tfAdresse" layoutX="572.0" layoutY="17.0" prefHeight="24.0" prefWidth="195.0" />
-                  <Text layoutX="441.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieferadresse">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Text>
-                  <ListView fx:id="lvOrders" layoutX="600.0" layoutY="91.0" prefHeight="328.0" prefWidth="194.0" />
-                  <Text layoutX="658.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders" wrappingWidth="78.93670654296875">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="btnOrderDetails" layoutX="602.0" layoutY="432.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="190.0" text="details">
-                     <font>
-                        <Font size="20.0" />
-                     </font></Button>
-                  <Text layoutX="43.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategorie" wrappingWidth="67.73672485351562">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-               </children></AnchorPane>
-      </content>
-    </Tab>
-    <Tab fx:id="tabVerkaeufer" text="Verkaeufer">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="564.0" prefWidth="833.0">
-               <children>
-                  <TableView fx:id="tvLieferungen" layoutX="24.0" layoutY="68.0" prefHeight="421.0" prefWidth="407.0">
-                    <columns>
-                      <TableColumn prefWidth="161.0" text="Ware" />
-                      <TableColumn prefWidth="135.0" text="Kunde" />
-                        <TableColumn prefWidth="110.0" text="Lieferdatum" />
-                    </columns>
-                  </TableView>
-                  <Text layoutX="24.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bevorstehende Lieferungen" wrappingWidth="291.10546875">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-                  <ListView fx:id="lvSortiment" layoutX="522.0" layoutY="81.0" prefHeight="363.0" prefWidth="200.0" />
-                  <Text layoutX="526.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sortiment" wrappingWidth="138.01953125">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="btnAddSort" layoutX="522.0" layoutY="489.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="add" />
-                  <Button fx:id="btnDeleteSort" layoutX="646.0" layoutY="489.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="delete" />
-                  <TextField fx:id="tfSortiment" layoutX="525.0" layoutY="451.0" prefHeight="25.0" prefWidth="193.0" />
-               </children></AnchorPane>
-      </content>
-    </Tab>
-  </tabs>
-</TabPane>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OnlineShopController">
+   <children>
+      <TabPane fx:id="tabFenster" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="847.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="tabKaeufer" text="Kaeufer">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="542.0" prefWidth="856.0">
+                     <children>
+                        <ListView fx:id="lvSC" layoutX="393.0" layoutY="90.0" prefHeight="329.0" prefWidth="194.0" />
+                        <Text layoutX="423.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shopping Cart" wrappingWidth="133.33673095703125">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Text>
+                        <ChoiceBox fx:id="cbKategorie" layoutX="125.0" layoutY="18.0" prefHeight="26.0" prefWidth="211.0" />
+                        <ListView fx:id="lvWaren" layoutX="17.0" layoutY="55.0" prefHeight="364.0" prefWidth="353.0" />
+                        <Button fx:id="btnAdd" layoutX="40.0" layoutY="435.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="307.0" text=" add to Warenkorb">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnDelete" layoutX="392.0" layoutY="421.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="delete" />
+                        <Button fx:id="btnPay" layoutX="395.0" layoutY="457.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="190.0" text="Pay">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnDetails" layoutX="500.0" layoutY="421.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="details" />
+                        <TextField fx:id="tfAdresse" layoutX="572.0" layoutY="17.0" prefHeight="24.0" prefWidth="195.0" />
+                        <Text layoutX="441.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieferadresse">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <ListView fx:id="lvOrders" layoutX="600.0" layoutY="91.0" prefHeight="328.0" prefWidth="194.0" />
+                        <Text layoutX="658.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders" wrappingWidth="78.93670654296875">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="btnOrderDetails" layoutX="602.0" layoutY="432.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="190.0" text="details">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Text layoutX="43.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategorie" wrappingWidth="67.73672485351562">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabVerkaeufer" text="Verkaeufer">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="564.0" prefWidth="833.0">
+                     <children>
+                        <TableView fx:id="tvLieferungen" layoutX="14.0" layoutY="51.0" prefHeight="457.0" prefWidth="344.0">
+                           <columns>
+                              <TableColumn prefWidth="136.0" text="Ware" />
+                              <TableColumn prefWidth="128.79998779296875" text="Kunde" />
+                              <TableColumn prefWidth="78.39999389648438" text="Lieferdatum" />
+                           </columns>
+                        </TableView>
+                        <Text layoutX="26.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bevorstehende Lieferungen" wrappingWidth="291.10546875">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ListView fx:id="lvSortiment" layoutX="676.0" layoutY="322.0" prefHeight="110.0" prefWidth="156.0" />
+                        <Text layoutX="676.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sortiment" wrappingWidth="138.01953125">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="btnDeleteSort" layoutX="771.0" layoutY="483.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="57.0" text="löschen" />
+                        <TextField fx:id="tfSortiment" layoutX="678.0" layoutY="441.0" prefHeight="22.0" prefWidth="151.0" />
+                        <ListView fx:id="lvInCartArticles" layoutX="364.0" layoutY="51.0" prefHeight="460.0" prefWidth="295.0" />
+                        <Text layoutX="364.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waren in Verkauf" wrappingWidth="192.4195556640625">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="btnAddSort" layoutX="678.0" layoutY="483.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="hinzufügen" />
+                        <Line endX="388.0" endY="40.800079345703125" layoutX="459.0" layoutY="250.0" startX="205.10003662109375" startY="40.80010986328125" />
+                        <Line endX="-82.39996337890625" endY="235.20001220703125" layoutX="747.0" layoutY="290.0" startX="-82.39996337890625" startY="3.0517578125E-5" />
+                        <Text layoutX="676.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="55.693359375">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="tfArticleName" layoutX="679.0" layoutY="44.0" />
+                        <Text layoutX="676.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="79.693359375">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="tfArticleDescript" layoutX="680.0" layoutY="99.0" />
+                        <Text layoutX="676.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preis" wrappingWidth="79.693359375">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="tfArticlePrice" layoutX="680.0" layoutY="149.0" />
+                        <ChoiceBox fx:id="cbArticleSort" layoutX="680.0" layoutY="195.0" prefWidth="150.0" />
+                        <Text layoutX="676.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorte" wrappingWidth="79.693359375">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="btnAddArticle" layoutX="681.0" layoutY="238.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" text="Hinzufügen" />
+                        <Button fx:id="btnDelCart" layoutX="563.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="löschen" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

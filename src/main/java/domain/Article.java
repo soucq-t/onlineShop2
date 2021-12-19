@@ -5,8 +5,10 @@ import java.util.Objects;
 public class Article {
     private final Integer id;
     private String name;
-    private Account seller;
-    private Sorts sort;
+    private int peis;
+    private String description;
+    private final Account seller;
+    private final Sorts sort;
 
     public Article(Integer id, String name, Account seller, Sorts sort) {
         this.id = id;
@@ -14,10 +16,26 @@ public class Article {
         this.seller = seller;
         this.sort = sort;
     }
-
     public Article(String name, Account seller, Sorts sort) {
         this(null, name, seller, sort);
     }
+    public Integer getId() {
+        return id;
+    }
+
+    public int getPeis() {
+        return peis;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Account getSeller() {
+        return seller;
+    }
+
+
 
     public Account getSellter() {
         return this.seller;
@@ -35,9 +53,7 @@ public class Article {
         this.name = name;
     }
 
-    public void setSort(Sorts sort) {
-        this.sort = sort;
-    }
+
 
     @Override
     public boolean equals(Object o) {

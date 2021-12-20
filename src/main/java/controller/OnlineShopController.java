@@ -1,5 +1,11 @@
 package controller;
+import domain.Article;
+import domain.CartArticle;
+import domain.Order;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
@@ -7,7 +13,11 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-public class OnlineShopController {
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class OnlineShopController implements Initializable {
 
     @FXML
     private TabPane tabFenster;
@@ -83,4 +93,13 @@ public class OnlineShopController {
 
     @FXML
     private Button btnDelCart;
+
+    private ObservableList<Article> itmesArcticles= FXCollections.observableArrayList();
+    private ObservableList<CartArticle> itmesCartArcticles= FXCollections.observableArrayList();
+    private ObservableList<Order> itmesOrders= FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

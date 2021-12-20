@@ -2,18 +2,18 @@ package domain;
 
 import java.util.Objects;
 
-public class InCartArticle {
+public class CartArticle {
     private final Integer id;
     private final Article article;
     private final Account buyer;
 
-    public InCartArticle(Integer id, Article article, Account buyer) {
+    public CartArticle(Integer id, Article article, Account buyer) {
         this.id = id;
         this.article = article;
         this.buyer = buyer;
     }
 
-    public InCartArticle(Article article, Account buyer) {
+    public CartArticle(Article article, Account buyer) {
         this(null,article,buyer);
     }
 
@@ -33,7 +33,7 @@ public class InCartArticle {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InCartArticle that = (InCartArticle) o;
+        CartArticle that = (CartArticle) o;
         return Objects.equals(id, that.id);
     }
 

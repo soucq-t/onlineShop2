@@ -13,6 +13,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import persistence.ArticleRepository;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -94,12 +95,13 @@ public class OnlineShopController implements Initializable {
     @FXML
     private Button btnDelCart;
 
-    private ObservableList<Article> itmesArcticles= FXCollections.observableArrayList();
-    private ObservableList<CartArticle> itmesCartArcticles= FXCollections.observableArrayList();
-    private ObservableList<Order> itmesOrders= FXCollections.observableArrayList();
+    private ObservableList<Article> itmesArticles;
+    private ObservableList<CartArticle> itmesCartArticles;
+    private ObservableList<Order> itmesOrders;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        itmesArticles=FXCollections.observableArrayList()
     }
 }

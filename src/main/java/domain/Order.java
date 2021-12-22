@@ -4,30 +4,21 @@ import java.util.Objects;
 
 public class Order {
     private final Integer id;
-    private final CartArticle article;
-    private String address;
+    private final Account account;
 
-    public Order(Integer id, CartArticle article, String address) {
+    public Order(Integer id, Account buyerAccount) {
         this.id = id;
-        this.article = article;
-        this.address = address;
+        this.account = buyerAccount;
     }
 
-    public Order(CartArticle article, String address) {
-        this(null,article,address);
+    public Order(Account account) {
+        this(null, account);
     }
 
     public Integer getId() {
         return id;
     }
 
-    public CartArticle getArticle() {
-        return article;
-    }
-
-    public String getAddress() {
-        return address;
-    }
 
     @Override
     public boolean equals(Object o) {

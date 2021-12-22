@@ -1,10 +1,17 @@
 package domain;
 
 import java.util.Objects;
-
+import lombok.Getter;
+import lombok.Setter;
 public class OrderArticel {
+    @Setter
+    @Getter
     private final Integer id;
+    @Setter
+    @Getter
     private final Article article;
+    @Setter
+    @Getter
     private final Order order;
 
     public OrderArticel(Integer id, Article article, Order order) {

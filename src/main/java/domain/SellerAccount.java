@@ -1,10 +1,19 @@
 package domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
-public class SellerAccount implements Account {
+public class SellerAccount  {
+    @Setter
+    @Getter
     private final Integer id;
+    @Setter
+    @Getter
     private String username;
+    @Setter
+    @Getter
     private String kennwort;
 
     public SellerAccount(Integer id, String username, String kennwort) {
@@ -15,32 +24,6 @@ public class SellerAccount implements Account {
 
     public SellerAccount(String username, String kennwort) {
         this(null, username, kennwort);
-    }
-
-    @Override
-    public Integer getId() {
-        return null;
-    }
-
-
-    @Override
-    public String getUserName() {
-        return this.username;
-    }
-
-    @Override
-    public String getKennwort() {
-        return this.kennwort;
-    }
-
-    @Override
-    public void getUserName(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public void setKennwort(String Kennwort) {
-        this.kennwort = kennwort;
     }
 
     @Override

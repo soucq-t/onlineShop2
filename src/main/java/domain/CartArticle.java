@@ -1,10 +1,17 @@
 package domain;
 
 import java.util.Objects;
-
+import lombok.Getter;
+import lombok.Setter;
 public class CartArticle {
+    @Setter
+    @Getter
     private final Integer id;
+    @Setter
+    @Getter
     private final Article article;
+    @Setter
+    @Getter
     private final Account buyer;
 
     public CartArticle(Integer id, Article article, Account buyer) {

@@ -1,17 +1,22 @@
 package domain;
 
 import java.util.Objects;
-
+import lombok.Getter;
+import lombok.Setter;
 public class Order {
+    @Setter
+    @Getter
     private final Integer id;
-    private final Account account;
+    @Setter
+    @Getter
+    private final BuyerAccount account;
 
-    public Order(Integer id, Account buyerAccount) {
+    public Order(Integer id, BuyerAccount buyerAccount) {
         this.id = id;
         this.account = buyerAccount;
     }
 
-    public Order(Account account) {
+    public Order(BuyerAccount account) {
         this(null, account);
     }
 

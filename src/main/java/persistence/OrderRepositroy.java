@@ -1,19 +1,20 @@
 package persistence;
 
+import domain.BuyerAccount;
 import domain.Order;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.SortedSet;
 
 public interface OrderRepositroy {
     ResultSet findAllInformationFromThisOrder(int id) throws SQLException;
 
-    Order findById(int id) throws SQLException;
 
-    List<Order> findAll() throws SQLException;
+    Order buy(BuyerAccount kunde) throws SQLException;
 
-    Order save(Order order) throws SQLException;
 
-    void delete(int id) throws SQLException;
+
+    SortedSet<Order> show_deliveries_for_buyer(Order bestellung) throws SQLException;
 }

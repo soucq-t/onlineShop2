@@ -1,10 +1,10 @@
 package persistence;
 
-import domain.Account;
+import domain.SellerAccount;
 
 import java.sql.SQLException;
 
 public interface SellerRepository {
-    Account save(Account buyer) throws SQLException;
-    void delete(Account buyer) throws SQLException;
+    SellerAccount save(SellerAccount buyer) throws SQLException;
+    void delete(SellerAccount buyer) throws SQLException;
 }

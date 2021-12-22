@@ -1,9 +1,14 @@
 package domain;
 
 import java.util.Objects;
-
+import lombok.Getter;
+import lombok.Setter;
 public class Sorts {
+    @Setter
+    @Getter
     private final Integer id;
+    @Setter
+    @Getter
     private String name;
 
     public Sorts(Integer id, String name) {

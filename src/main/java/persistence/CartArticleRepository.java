@@ -16,5 +16,5 @@ public interface CartArticleRepository {
 
     void delete_from_basket(Article artikel, BuyerAccount kundeAccount) throws SQLException;
 
-    SortedSet<CartArticle> show_basket(Article artikel, BuyerAccount kunde) throws SQLException;
+    SortedSet<CartArticle> show_basket(BuyerAccount kunde) throws SQLException;
 }

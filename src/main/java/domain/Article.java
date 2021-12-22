@@ -24,12 +24,12 @@ public class Article {
     private String description;
     @Getter
     @Setter
-    private final Account seller;
+    private final SellerAccount seller;
     @Getter
     @Setter
     private final Sorts sort;
 
-    public Article(Integer id, String name, double preis, String description, Account seller, Sorts sort) {
+    public Article(Integer id, String name, double preis, String description, SellerAccount seller, Sorts sort) {
         this.id = id;
         this.name = name;
         this.price = preis;
@@ -38,7 +38,7 @@ public class Article {
         this.sort = sort;
     }
 
-    public Article(String name, double preis, String description, Account seller, Sorts sort) {
+    public Article(String name, double preis, String description, SellerAccount seller, Sorts sort) {
         this(null, name, preis, description, seller, sort);
     }
 

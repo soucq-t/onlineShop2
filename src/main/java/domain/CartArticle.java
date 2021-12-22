@@ -12,15 +12,15 @@ public class CartArticle {
     private final Article article;
     @Setter
     @Getter
-    private final Account buyer;
+    private final BuyerAccount buyer;
 
-    public CartArticle(Integer id, Article article, Account buyer) {
+    public CartArticle(Integer id, Article article, BuyerAccount buyer) {
         this.id = id;
         this.article = article;
         this.buyer = buyer;
     }
 
-    public CartArticle(Article article, Account buyer) {
+    public CartArticle(Article article, BuyerAccount buyer) {
         this(null,article,buyer);
     }
 
@@ -32,7 +32,7 @@ public class CartArticle {
         return article;
     }
 
-    public Account getBuyer() {
+    public BuyerAccount getBuyer() {
         return buyer;
     }
 

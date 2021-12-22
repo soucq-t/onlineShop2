@@ -16,6 +16,10 @@ public class Sorts {
         this.name = name;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public Sorts(String name) {
         this(null, name);
     }

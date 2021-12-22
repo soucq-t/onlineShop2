@@ -82,7 +82,7 @@
                         </Text>
                         <Button fx:id="btnDeleteSort" layoutX="771.0" layoutY="483.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="57.0" text="löschen" />
                         <TextField fx:id="tfSortiment" layoutX="678.0" layoutY="441.0" prefHeight="22.0" prefWidth="151.0" />
-                        <ListView fx:id="lvInCartArticles" layoutX="364.0" layoutY="51.0" prefHeight="460.0" prefWidth="295.0" />
+                        <ListView fx:id="lvSellingArticles" layoutX="364.0" layoutY="51.0" prefHeight="460.0" prefWidth="295.0" />
                         <Text layoutX="364.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waren in Verkauf" wrappingWidth="192.4195556640625">
                            <font>
                               <Font size="20.0" />

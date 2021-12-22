@@ -56,7 +56,7 @@ public class OnlineShopController implements Initializable {
     private Tab tabVerkaeufer;
 
     @FXML
-    private TableView<?> tvLieferungen;
+    private ListView<Order> lvLieferungen;
 
     @FXML
     private ListView<?> lvSortiment;
@@ -91,10 +91,15 @@ public class OnlineShopController implements Initializable {
     @FXML
     private Button btnDelCart;
 
+    @FXML
+    private Button btnLieferungDetails;
+
+
     private ObservableList<Article> itemsArticles;
     private ObservableList<CartArticle> itemsCartArcticles;
     private ObservableList<Order> itemsOrders;
     private ObservableList<Sorts> itemsSorts;
+    private ObservableList<Article> itemsSellerArticles;
 
     private ArticleRepository articleRepositroy;
     private BuyerRepository buyerRepository;
@@ -104,6 +109,7 @@ public class OnlineShopController implements Initializable {
     private OrderArticelRepository orderArticelRepository;
     private SortsRepositroy sortsRepositroy;
     private Account buyerAccount;
+    private SellerAccount  sellerAccount;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -129,6 +135,9 @@ public class OnlineShopController implements Initializable {
 
             itemsOrders = FXCollections.observableArrayList(orderRepositroy.findAll());
             lvOrders.setItems(itemsOrders);
+            lvLieferungen.setItems(itemsOrders);
+
+            itemsSellerArticles=FXCollections.observableArrayList()
 
         } catch (SQLException e) {
             System.out.println("AnfangsInitailize failed");
@@ -140,12 +149,20 @@ public class OnlineShopController implements Initializable {
         btnDeleteCartArticle.setOnAction(actionEvent -> deleteCartArticle());
         btnCartArticleDetails.setOnAction(actionEvent -> cartArticleDetails());
         btnPayCartArticle.setOnAction(actionEvent -> payCartArticle());
-        btnOrderDetails.setOnAction(actionEvent -> orderDetails());
+        btnOrderDetails.setOnAction(actionEvent -> orderDetails(1));
+        btnLieferungDetails.setOnAction(actionEvent -> orderDetails(2));
+        lvInCartArticles.setItems(itemsSellerArticles);
     }
 
-    private void orderDetails() {
+    private void orderDetails(int i) {
         Alert alert;
-        if (lvOrders.getSelectionModel().getSelectedItems().size() != 1) {
+        int anzahlItems=0;
+        if (i == 0){
+            anzahlItems=lvOrders.getSelectionModel().getSelectedItems().size();
+        }else if (i == 0){
+            anzahlItems=lvLieferungen.getSelectionModel().getSelectedItems().size();
+        }
+        if (anzahlItems!= 1) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Bitte Nur eine Bestellung auswählen");
             alert.setHeaderText("Bitte Nur eine Bestellung auswählen");

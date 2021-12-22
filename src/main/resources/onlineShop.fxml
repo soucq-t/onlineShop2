@@ -5,8 +5,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -71,13 +69,6 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="564.0" prefWidth="833.0">
                      <children>
-                        <TableView fx:id="tvLieferungen" layoutX="14.0" layoutY="51.0" prefHeight="457.0" prefWidth="344.0">
-                           <columns>
-                              <TableColumn prefWidth="136.0" text="Ware" />
-                              <TableColumn prefWidth="128.79998779296875" text="Kunde" />
-                              <TableColumn prefWidth="78.4000244140625" text="Lieferdatum" />
-                           </columns>
-                        </TableView>
                         <Text layoutX="26.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bevorstehende Lieferungen" wrappingWidth="291.10546875">
                            <font>
                               <Font size="20.0" />
@@ -126,6 +117,8 @@
                         </Text>
                         <Button fx:id="btnAddArticle" layoutX="684.0" layoutY="236.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" text="Hinzufügen" />
                         <Button fx:id="btnDelCart" layoutX="563.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="löschen" />
+                        <ListView fx:id="lvLieferung" layoutX="14.0" layoutY="55.0" prefHeight="409.0" prefWidth="310.0" />
+                        <Button fx:id="btnLieferungDetails" layoutX="26.0" layoutY="483.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="121.0" text="Detials" />
                      </children>
                   </AnchorPane>
                </content>

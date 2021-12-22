@@ -12,7 +12,7 @@ public class TestConnectionSupplier {
         properties.put("user", "sa");
         properties.put("password","");
         return DriverManager.getConnection("""
-                jdbc:sqlserver://IFSQL-03.htl-stp.if
+                jdbc:sqlserver://IFSQL-03.htl-stp.if;database=chen_onlineShop
                 """,properties);
     }
 }

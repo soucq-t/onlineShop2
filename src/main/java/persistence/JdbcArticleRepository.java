@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public record JdbcArticleRepository(Connection connection) implements ArticleRepositroy{
+public record JdbcArticleRepository(Connection connection) implements ArticleRepositroy {
     @Override
     public Article insert_into_store(Article Article) throws SQLException {
         var sql = "insert into Article(art_name,art_price,art_Description,art_kat_id,art_vA_id) values (?,?,?,?,?)";
@@ -81,8 +81,8 @@ public record JdbcArticleRepository(Connection connection) implements ArticleRep
                 Article_set.add(new Article(resultSet.getInt(1), resultSet.getString(2),
                         resultSet.getDouble(3), resultSet.getString(4)
                         , new SellerAccount(resultSet.getInt("art_vA_id"), resultSet.getString("username"),
-                        resultSet.getString("kennwort"),resultSet.getString("sitz")),
-                         new Sorts(resultSet.getInt("art_kat_id"), resultSet.getString("kat_name"))));
+                        resultSet.getString("kennwort"), resultSet.getString("sitz")),
+                        new Sorts(resultSet.getInt("art_kat_id"), resultSet.getString("kat_name"))));
             }
         }
 
@@ -97,22 +97,47 @@ public record JdbcArticleRepository(Connection connection) implements ArticleRep
                 " on verkaueferAccount.vA_id = artikel.art_vA_id " +
                 " inner join kategorie " +
                 " on kategorie.kat_id = artikel.art_vA_id " +
-                " where art_Va_id = ?";
+                " where art_kat_id = ?";
 
 
         try (var statement = connection.prepareStatement(sql)) {
-            statement.setInt(1,ka.intValue());
+            statement.setInt(1, ka.intValue());
             var resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 ArticleList.add(new Article(resultSet.getInt(1), resultSet.getString(2),
                         resultSet.getDouble(3), resultSet.getString(4)
                         , new SellerAccount(resultSet.getInt("art_vA_id"), resultSet.getString("username"),
-                        resultSet.getString("kennwort"),resultSet.getString("sitz")),
+                        resultSet.getString("kennwort"), resultSet.getString("sitz")),
                         new Sorts(resultSet.getInt("art_kat_id"), resultSet.getString("kat_name"))));
             }
         }
         return ArticleList;
 
+    }
+
+    @Override
+    public SortedSet<Article> findAllfromThisSeller(SellerAccount sellerAccount) throws SQLException {
+        var sql = "select * from artikel" +
+                " inner join verkaueferAccount " +
+                " on verkaueferAccount.vA_id = artikel.art_vA_id " +
+                " inner join kategorie " +
+                " on kategorie.kat_id = artikel.art_vA_id " +
+                " where art_vA_id = ?";
+
+        SortedSet<Article> articleSortedSet = new TreeSet<>();
+        try (var statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, sellerAccount.getId());
+            var resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                articleSortedSet.add(new Article(resultSet.getInt(1), resultSet.getString(2),
+                        resultSet.getDouble(3), resultSet.getString(4)
+                        , new SellerAccount(resultSet.getInt("art_vA_id"), resultSet.getString("username"),
+                        resultSet.getString("kennwort"), resultSet.getString("sitz")),
+                        new Sorts(resultSet.getInt("art_kat_id"), resultSet.getString("kat_name"))));
+            }
+        }
+        return articleSortedSet;
     }
 
 }

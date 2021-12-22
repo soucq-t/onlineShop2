@@ -23,6 +23,7 @@ public class BuyerAccount  {
         this.kennwort = kennwort;
     }
 
+
     public BuyerAccount(String username, String kennwort) {
         this(null,username,kennwort);
     }

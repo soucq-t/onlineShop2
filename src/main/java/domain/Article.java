@@ -9,7 +9,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Article {
+public class Article implements Comparable {
     @Getter
     @Setter
     private final Integer id;
@@ -54,5 +54,10 @@ public class Article {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return  Comparator.comparing(Article::getName).thenComparing(Article::getPrice).compare(this, (Article) o);
     }
 }

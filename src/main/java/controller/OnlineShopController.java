@@ -128,10 +128,10 @@ public class OnlineShopController implements Initializable {
             itemsSorts = FXCollections.observableArrayList(sortsRepositroy.findAll());
             cbKategorie.setItems(itemsSorts);
 
-            itemsArticles = FXCollections.observableArrayList(articleRepositroy.getAllArticleFromThisSort(cbArticleSort.getSelectionModel().getSelectedItem().getId()));
+            itemsArticles = FXCollections.observableArrayList(articleRepositroy.return_articles_by_category(cbArticleSort.getSelectionModel().getSelectedItem().getId()));
             lvArticles.setItems(itemsArticles);
 
-            itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.show_basket(buyerAccount));
+            itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.getAllCartArticleFromThisBuyer(buyerAccount));
             lvCartArticles.setItems(itemsCartArcticles);
 
             itemsOrders = FXCollections.observableArrayList(orderRepositroy.findAllFromThisBuyer(buyerAccount));
@@ -140,7 +140,7 @@ public class OnlineShopController implements Initializable {
             itemsLieferung = FXCollections.observableArrayList(orderRepositroy.findAllFromThisSeller(sellerAccount));
             lvLieferungen.setItems(itemsLieferung);
 
-            itemsSellerArticles = FXCollections.observableArrayList(articleRepositroy.findAllFromThisSeller(sellerAccount))
+            itemsSellerArticles = FXCollections.observableArrayList(articleRepositroy.findAllfromThisSeller(sellerAccount));
             lvSellingArticles.setItems(itemsSellerArticles);
 
         } catch (SQLException e) {
@@ -156,7 +156,13 @@ public class OnlineShopController implements Initializable {
         btnPayCartArticle.setOnAction(actionEvent -> payCartArticle());
         btnOrderDetails.setOnAction(actionEvent -> orderDetails(1));
         btnLieferungDetails.setOnAction(actionEvent -> orderDetails(2));
-        btnAddArticle.setOnAction(actionEvent -> addArticle());
+        btnAddArticle.setOnAction(actionEvent -> {
+            try {
+                addArticle();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void addArticle() throws SQLException {
@@ -167,7 +173,7 @@ public class OnlineShopController implements Initializable {
 
             articleRepositroy.insert_into_store(new Article(tfArticleName.getText(), Double.parseDouble(tfArticlePrice.getText()),
                     tfArticleDescript.getText(), sellerAccount, new Sorts(cbArticleSort.getSelectionModel().getSelectedItem().toString())));
-            itemsSellerArticles=FXCollections.observableArrayList(articleRepositroy.findAllFromThisSeller(sellerAccount));
+            itemsSellerArticles=FXCollections.observableArrayList(articleRepositroy.findAllfromThisSeller(sellerAccount));
         }
     }
 
@@ -256,7 +262,7 @@ public class OnlineShopController implements Initializable {
             for (CartArticle article : allSelectedArticles) {
                 try {
                     cartArctileRepository.delete(article.getId().intValue());
-                    itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.findAllFromThisBuyer(buyerAccount));
+                    itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.getAllCartArticleFromThisBuyer(buyerAccount));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -271,8 +277,8 @@ public class OnlineShopController implements Initializable {
             ObservableList<Article> allSelectedArticles = lvArticles.getSelectionModel().getSelectedItems();
             for (Article article : allSelectedArticles) {
                 try {
-                    allSavedArticles.add(cartArctileRepository.add_to_basket(article, buyerAccount));
-                    itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.findAllFromThisBuyer());
+                    allSavedArticles.add(cartArctileRepository.add_to_basket(new CartArticle(article, buyerAccount)));
+                    itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.getAllCartArticleFromThisBuyer(buyerAccount));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

@@ -1,6 +1,7 @@
 package persistence;
 
 import domain.Article;
+import domain.SellerAccount;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -18,4 +19,6 @@ public interface ArticleRepositroy {
     SortedSet<Article> find_by_name(String name) throws SQLException;
 
     List<Article> return_articles_by_category(Integer ka) throws SQLException;
+
+    SortedSet<Article> findAllfromThisSeller(SellerAccount sellerAccount) throws SQLException;
 }

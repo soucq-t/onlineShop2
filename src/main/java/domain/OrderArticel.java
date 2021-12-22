@@ -1,9 +1,10 @@
 package domain;
 
+import java.util.Comparator;
 import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
-public class OrderArticel {
+public class OrderArticel implements Comparable {
     @Setter
     @Getter
     private final Integer id;
@@ -20,17 +21,7 @@ public class OrderArticel {
         this.order = order;
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public Article getArticle() {
-        return article;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
 
     public OrderArticel(Article article, Order order) {
         this(null,article,order);
@@ -47,5 +38,10 @@ public class OrderArticel {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return Comparator.comparing(OrderArticel::getId).thenComparing(OrderArticel::getArticle).compare(this, (OrderArticel) o);
     }
 }

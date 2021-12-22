@@ -3,6 +3,7 @@ package persistence;
 import domain.Article;
 import domain.BuyerAccount;
 import domain.CartArticle;
+import domain.OrderArticel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,9 +13,13 @@ import java.util.SortedSet;
 public interface CartArticleRepository {
     ResultSet getAllInformationFromThisArticle(int id) throws SQLException;
 
-    CartArticle add_to_basket(Article artikel, BuyerAccount kundeAccount) throws SQLException;
+    CartArticle add_to_basket(CartArticle cartArticle) throws SQLException;
 
-    void delete_from_basket(Article artikel, BuyerAccount kundeAccount) throws SQLException;
+    void delete(Integer artikel) throws SQLException;
 
-    SortedSet<CartArticle> show_basket(BuyerAccount kunde) throws SQLException;
+
+    SortedSet<CartArticle> getAllCartArticleFromThisBuyer(BuyerAccount buyerAccount) throws SQLException;
+
+
+
 }

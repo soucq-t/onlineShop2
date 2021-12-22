@@ -20,9 +20,7 @@ public class Sorts {
         this(null, name);
     }
 
-    public String getSortName() {
-        return this.name;
-    }
+
 
     @Override
     public boolean equals(Object o) {

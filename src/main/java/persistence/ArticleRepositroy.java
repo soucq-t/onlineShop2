@@ -17,5 +17,5 @@ public interface ArticleRepositroy {
 
     SortedSet<Article> find_by_name(String name) throws SQLException;
 
-    List<Article> return_articles_by_category(String kategorie_name) throws SQLException;
+    List<Article> return_articles_by_category(Integer ka) throws SQLException;
 }

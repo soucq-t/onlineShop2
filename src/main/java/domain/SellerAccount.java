@@ -15,15 +15,19 @@ public class SellerAccount  {
     @Setter
     @Getter
     private String kennwort;
+    @Getter
+    @Setter
+    private  String sitz;
 
-    public SellerAccount(Integer id, String username, String kennwort) {
+    public SellerAccount(Integer id, String username, String kennwort, String sitz) {
         this.id = id;
         this.username = username;
         this.kennwort = kennwort;
+        this.sitz = sitz;
     }
 
-    public SellerAccount(String username, String kennwort) {
-        this(null, username, kennwort);
+    public SellerAccount(String username, String kennwort, String sitz) {
+        this(null, username, kennwort, sitz);
     }
 
     @Override

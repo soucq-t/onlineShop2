@@ -14,7 +14,6 @@ public interface OrderRepositroy {
 
     Order buy(BuyerAccount kunde) throws SQLException;
 
-
-
+    SortedSet<Order> show_all_orders_for_buyer(BuyerAccount buyerAccount) throws SQLException;
     SortedSet<Order> show_deliveries_for_buyer(Order bestellung) throws SQLException;
 }

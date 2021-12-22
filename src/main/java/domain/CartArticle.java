@@ -12,29 +12,18 @@ public class CartArticle {
     private final Article article;
     @Setter
     @Getter
-    private final Account buyer;
+    private final BuyerAccount buyer;
 
-    public CartArticle(Integer id, Article article, Account buyer) {
+    public CartArticle(Integer id, Article article, BuyerAccount buyer) {
         this.id = id;
         this.article = article;
         this.buyer = buyer;
     }
 
-    public CartArticle(Article article, Account buyer) {
+    public CartArticle(Article article, BuyerAccount buyer) {
         this(null,article,buyer);
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public Article getArticle() {
-        return article;
-    }
-
-    public Account getBuyer() {
-        return buyer;
-    }
 
     @Override
     public boolean equals(Object o) {

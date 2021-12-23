@@ -11,4 +11,5 @@ public interface SortsRepositroy {
     Sorts save(Sorts sorts) throws SQLException;
 
     void delete(int id) throws SQLException;
+    Sorts findByID(Integer id)throws SQLException;
 }

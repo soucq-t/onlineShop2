@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="chen_onlineShop@IFSQL-03.htl-stp.if">
+  <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.31">
+    <root id="1">
+      <Grants>2|||2|connect|G
+3|||2|connect|G
+4|||2|connect|G
+5|||2|connect|G
+0|root||263|alter any availability group|G
+0|root||268|alter any event session|G
+0|root||102|authenticate server|G
+0|root||103|authenticate server|G
+0|root||268|connect any database|G
+0|root||1|connect sql|G
+0|root||257|connect sql|G
+0|root||259|connect sql|G
+0|root||260|connect sql|G
+0|root||261|connect sql|G
+0|root||262|connect sql|G
+0|root||263|connect sql|G
+0|root||264|connect sql|G
+0|root||265|connect sql|G
+0|root||266|connect sql|G
+0|root||267|connect sql|G
+0|root||268|connect sql|G
+0|root||273|connect sql|G
+0|root||276|connect sql|G
+0|root||287|connect sql|G
+0|root||288|connect sql|G
+0|root||289|connect sql|G
+0|root||105|control server|G
+0|root||2|view any database|G
+0|root||101|view any definition|G
+0|root||102|view any definition|G
+0|root||105|view any definition|G
+0|root||106|view any definition|G
+0|root||257|view any definition|G
+0|root||268|view any definition|G
+0|root||102|view server state|G
+0|root||257|view server state|G
+0|root||263|view server state|G
+0|root||268|view server state|G</Grants>
+      <PermissionsCheckSum>54317096141</PermissionsCheckSum>
+      <ServerVersion>13.0.5865</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="E02_Tabellen">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>7</ObjectId>
+    </database>
+    <database id="3" parent="1" name="Piringer_Fußballvereinsverwaltung">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>13</ObjectId>
+    </database>
+    <database id="4" parent="1" name="Piringer_Fußballvereinsverwaltung_Pos">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>19</ObjectId>
+    </database>
+    <database id="5" parent="1" name="ReportServer">
+      <Collation>Latin1_General_100_CI_AS_KS_WS</Collation>
+      <ObjectId>5</ObjectId>
+    </database>
+    <database id="6" parent="1" name="ReportServerTempDB">
+      <Collation>Latin1_General_100_CI_AS_KS_WS</Collation>
+      <ObjectId>6</ObjectId>
+    </database>
+    <database id="7" parent="1" name="baum_policestation">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>9</ObjectId>
+    </database>
+    <database id="8" parent="1" name="chen_flughafen">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>17</ObjectId>
+    </database>
+    <database id="9" parent="1" name="chen_onlineShop">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <Current>1</Current>
+      <Fingerprint>18.44545/DBCD4F1A-64A4-4AFD-9572-EDFE395EC463@IFSQL-03</Fingerprint>
+      <Grants>18|database||1|connect|G
+18|database||5|connect|G
+18|database||0|view any column encryption key definition|G
+18|database||0|view any column master key definition|G</Grants>
+      <ObjectId>18</ObjectId>
+      <PermissionsCheckSum>4255254626</PermissionsCheckSum>
+    </database>
+    <database id="10" parent="1" name="hamm_university">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>8</ObjectId>
+    </database>
+    <database id="11" parent="1" name="hofbauer_Rennserie">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>15</ObjectId>
+    </database>
+    <database id="12" parent="1" name="hrazdira_oefb">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>12</ObjectId>
+    </database>
+    <database id="13" parent="1" name="jan_schulverwaltung">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>16</ObjectId>
+    </database>
+    <database id="14" parent="1" name="master">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>1</ObjectId>
+    </database>
+    <database id="15" parent="1" name="model">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>3</ObjectId>
+    </database>
+    <database id="16" parent="1" name="msdb">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>4</ObjectId>
+    </database>
+    <database id="17" parent="1" name="natroshvili_krankenhaus">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>11</ObjectId>
+    </database>
+    <database id="18" parent="1" name="scho_supermarket">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>10</ObjectId>
+    </database>
+    <database id="19" parent="1" name="stiefsohn_musikverein">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>14</ObjectId>
+    </database>
+    <database id="20" parent="1" name="stiefsohn_musikverein_POS">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>20</ObjectId>
+    </database>
+    <database id="21" parent="1" name="tempdb">
+      <Collation>Latin1_General_CI_AS</Collation>
+      <ObjectId>2</ObjectId>
+    </database>
+    <linked-server id="22" parent="1" name="IFSQLMASTER">
+      <DataSource>IFSQLMASTER</DataSource>
+      <Product>SQL Server</Product>
+      <ProviderName>SQLNCLI</ProviderName>
+    </linked-server>
+    <login id="23" parent="1" name="sa">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>1</ObjectId>
+    </login>
+    <login id="24" parent="1" name="public">
+      <Enabled>1</Enabled>
+      <ObjectId>2</ObjectId>
+      <Type>server-role</Type>
+    </login>
+    <login id="25" parent="1" name="sysadmin">
+      <Enabled>1</Enabled>
+      <ObjectId>3</ObjectId>
+      <Type>server-role</Type>
+    </login>
+    <login id="26" parent="1" name="securityadmin">
+      <Enabled>1</Enabled>
+      <ObjectId>4</ObjectId>
+      <Type>server-role</Type>
+    </login>
+    <login id="27" parent="1" name="serveradmin">
+      <Enabled>1</Enabled>
+      <ObjectId>5</ObjectId>
+      <Type>server-role</Type>
+    </login>
+    <login id="28" parent="1" name="setupadmin">
+      <Enabled>1</Enabled>
+      <ObjectId>6</ObjectId>
+      <Type>server-role</Type>
+    </login>
+    <login id="29" parent="1" name="processadmin">
+      <Enabled>1</Enabled>
+      <ObjectId>7</ObjectId>
+      <Type>server-role</Type>
+    </login>
+    <login id="30" parent="1" name="diskadmin">
+      <Enabled>1</Enabled>
+      <ObjectId>8</ObjectId>
+      <Type>server-role</Type>
+    </login>
+    <login id="31" parent="1" name="dbcreator">
+      <Enabled>1</Enabled>
+      <ObjectId>9</ObjectId>
+      <Type>server-role</Type>
+    </login>
+    <login id="32" parent="1" name="bulkadmin">
+      <Enabled>1</Enabled>
+      <ObjectId>10</ObjectId>
+      <Type>server-role</Type>
+    </login>
+    <login id="33" parent="1" name="##MS_SQLResourceSigningCertificate##">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>101</ObjectId>
+      <Type>certificate-mapped-login</Type>
+    </login>
+    <login id="34" parent="1" name="##MS_SQLReplicationSigningCertificate##">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>102</ObjectId>
+      <Type>certificate-mapped-login</Type>
+    </login>
+    <login id="35" parent="1" name="##MS_SQLAuthenticatorCertificate##">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>103</ObjectId>
+      <Type>certificate-mapped-login</Type>
+    </login>
+    <login id="36" parent="1" name="##MS_PolicySigningCertificate##">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>105</ObjectId>
+      <Type>certificate-mapped-login</Type>
+    </login>
+    <login id="37" parent="1" name="##MS_SmoExtendedSigningCertificate##">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>106</ObjectId>
+      <Type>certificate-mapped-login</Type>
+    </login>
+    <login id="38" parent="1" name="##MS_PolicyTsqlExecutionLogin##">
+      <DefaultDatabase>master</DefaultDatabase>
+      <ObjectId>257</ObjectId>
+    </login>
+    <login id="39" parent="1" name="IFSQLMASTER\Administrator">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>259</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="40" parent="1" name="NT SERVICE\SQLWriter">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>260</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="41" parent="1" name="NT SERVICE\Winmgmt">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>261</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="42" parent="1" name="NT Service\MSSQLSERVER">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>262</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="43" parent="1" name="NT-AUTORITÄT\SYSTEM">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>263</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="44" parent="1" name="NT SERVICE\SQLSERVERAGENT">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>264</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="45" parent="1" name="NT SERVICE\ReportServer">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>265</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="46" parent="1" name="NT-AUTORITÄT\Netzwerkdienst">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>266</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="47" parent="1" name="l_certSignSmDetach">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>267</ObjectId>
+      <Type>certificate-mapped-login</Type>
+    </login>
+    <login id="48" parent="1" name="NT SERVICE\SQLTELEMETRY">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>268</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="49" parent="1" name="VORDEFINIERT\Benutzer">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>273</ObjectId>
+      <Type>windows-group</Type>
+    </login>
+    <login id="50" parent="1" name="VORDEFINIERT\Administratoren">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>276</ObjectId>
+      <Type>windows-group</Type>
+    </login>
+    <login id="51" parent="1" name="HTL-STP-IF\hamm">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>287</ObjectId>
+      <Type>windows-login</Type>
+    </login>
+    <login id="52" parent="1" name="##MS_PolicyEventProcessingLogin##">
+      <DefaultDatabase>master</DefaultDatabase>
+      <ObjectId>288</ObjectId>
+    </login>
+    <login id="53" parent="1" name="##MS_AgentSigningCertificate##">
+      <DefaultDatabase>master</DefaultDatabase>
+      <Enabled>1</Enabled>
+      <ObjectId>289</ObjectId>
+      <Type>certificate-mapped-login</Type>
+    </login>
+    <role id="54" parent="9" name="public">
+      <AuthType>none</AuthType>
+      <ObjectId>0</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="55" parent="9" name="dbo">
+      <AuthType>instance</AuthType>
+      <DefaultSchema>dbo</DefaultSchema>
+      <ObjectId>1</ObjectId>
+    </role>
+    <role id="56" parent="9" name="guest">
+      <AuthType>none</AuthType>
+      <DefaultSchema>guest</DefaultSchema>
+      <ObjectId>2</ObjectId>
+    </role>
+    <role id="57" parent="9" name="INFORMATION_SCHEMA">
+      <AuthType>none</AuthType>
+      <ObjectId>3</ObjectId>
+    </role>
+    <role id="58" parent="9" name="sys">
+      <AuthType>none</AuthType>
+      <ObjectId>4</ObjectId>
+    </role>
+    <role id="59" parent="9" name="HTL-STP-IF\hamm">
+      <AuthType>windows</AuthType>
+      <DefaultSchema>dbo</DefaultSchema>
+      <ObjectId>5</ObjectId>
+      <Type>windows-user</Type>
+    </role>
+    <role id="60" parent="9" name="db_owner">
+      <AuthType>none</AuthType>
+      <ObjectId>16384</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="61" parent="9" name="db_accessadmin">
+      <AuthType>none</AuthType>
+      <ObjectId>16385</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="62" parent="9" name="db_securityadmin">
+      <AuthType>none</AuthType>
+      <ObjectId>16386</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="63" parent="9" name="db_ddladmin">
+      <AuthType>none</AuthType>
+      <ObjectId>16387</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="64" parent="9" name="db_backupoperator">
+      <AuthType>none</AuthType>
+      <ObjectId>16389</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="65" parent="9" name="db_datareader">
+      <AuthType>none</AuthType>
+      <ObjectId>16390</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="66" parent="9" name="db_datawriter">
+      <AuthType>none</AuthType>
+      <ObjectId>16391</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="67" parent="9" name="db_denydatareader">
+      <AuthType>none</AuthType>
+      <ObjectId>16392</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="68" parent="9" name="db_denydatawriter">
+      <AuthType>none</AuthType>
+      <ObjectId>16393</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <schema id="69" parent="9" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+    </schema>
+    <schema id="70" parent="9" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+    </schema>
+    <schema id="71" parent="9" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+    </schema>
+    <schema id="72" parent="9" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+    </schema>
+    <schema id="73" parent="9" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+    </schema>
+    <schema id="74" parent="9" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+    </schema>
+    <schema id="75" parent="9" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+    </schema>
+    <schema id="76" parent="9" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+    </schema>
+    <schema id="77" parent="9" name="db_owner">
+      <ObjectId>16384</ObjectId>
+    </schema>
+    <schema id="78" parent="9" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+    </schema>
+    <schema id="79" parent="9" name="dbo">
+      <Current>1</Current>
+      <IntrospectionTimestamp>2021-12-22.22:45:40.907</IntrospectionTimestamp>
+      <ObjectId>1</ObjectId>
+    </schema>
+    <schema id="80" parent="9" name="guest">
+      <ObjectId>2</ObjectId>
+    </schema>
+    <schema id="81" parent="9" name="sys">
+      <ObjectId>4</ObjectId>
+    </schema>
+    <table id="82" parent="79" name="artikel">
+      <CreatedTimestamp>2021-12-22.12:36:58.710</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.720</ModifiedTimestamp>
+      <ObjectId>669245439</ObjectId>
+    </table>
+    <table id="83" parent="79" name="bestellung">
+      <CreatedTimestamp>2021-12-22.12:36:58.717</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.723</ModifiedTimestamp>
+      <ObjectId>797245895</ObjectId>
+    </table>
+    <table id="84" parent="79" name="bestellungsArtikel">
+      <CreatedTimestamp>2021-12-22.12:36:58.720</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.720</ModifiedTimestamp>
+      <ObjectId>845246066</ObjectId>
+    </table>
+    <table id="85" parent="79" name="kategorie">
+      <CreatedTimestamp>2021-12-22.12:36:58.707</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.710</ModifiedTimestamp>
+      <ObjectId>637245325</ObjectId>
+    </table>
+    <table id="86" parent="79" name="kundeAccount">
+      <CreatedTimestamp>2021-12-22.12:36:58.700</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.720</ModifiedTimestamp>
+      <ObjectId>573245097</ObjectId>
+    </table>
+    <table id="87" parent="79" name="verkaeuferAccount">
+      <CreatedTimestamp>2021-12-22.12:36:58.703</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.713</ModifiedTimestamp>
+      <ObjectId>605245211</ObjectId>
+    </table>
+    <table id="88" parent="79" name="warenKorbArtikel">
+      <CreatedTimestamp>2021-12-22.12:36:58.713</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.713</ModifiedTimestamp>
+      <ObjectId>733245667</ObjectId>
+    </table>
+    <column id="89" parent="82" name="art_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1(33)</SequenceIdentity>
+    </column>
+    <column id="90" parent="82" name="art_name">
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="91" parent="82" name="art_price">
+      <DataType>decimal(8,2)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="92" parent="82" name="art_Description">
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="93" parent="82" name="art_kat_id">
+      <DataType>int|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="94" parent="82" name="art_vA_id">
+      <DataType>int|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="95" parent="82" name="FK__artikel__art_kat__29CC2871">
+      <ColNames>art_kat_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.710</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.710</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>701245553</ObjectId>
+      <OnDelete>set-null</OnDelete>
+      <RefColNames>kat_id</RefColNames>
+      <RefKeyName>PK__kategori__EFC88BAA7016D916</RefKeyName>
+      <RefTableId>637245325</RefTableId>
+      <RefTableName>kategorie</RefTableName>
+    </foreign-key>
+    <foreign-key id="96" parent="82" name="FK__artikel__art_vA___2AC04CAA">
+      <ColNames>art_vA_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.710</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.710</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>717245610</ObjectId>
+      <OnDelete>set-null</OnDelete>
+      <RefColNames>vA_id</RefColNames>
+      <RefKeyName>PK__verkaeuf__93769E0761890763</RefKeyName>
+      <RefTableId>605245211</RefTableId>
+      <RefTableName>verkaeuferAccount</RefTableName>
+    </foreign-key>
+    <index id="97" parent="82" name="PK__artikel__C4784F00DE06359C">
+      <Clustering>1</Clustering>
+      <ColNames>art_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="98" parent="82" name="PK__artikel__C4784F00DE06359C">
+      <ColNames>art_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.710</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.710</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>685245496</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK__artikel__C4784F00DE06359C</UnderlyingIndexName>
+    </key>
+    <column id="99" parent="83" name="bes_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1(5)</SequenceIdentity>
+    </column>
+    <column id="100" parent="83" name="bes_kA_id">
+      <DataType>int|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <foreign-key id="101" parent="83" name="FK__bestellun__bes_k__316D4A39">
+      <ColNames>bes_kA_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.717</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.717</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>829246009</ObjectId>
+      <OnDelete>set-null</OnDelete>
+      <RefColNames>kA_id</RefColNames>
+      <RefKeyName>PK__kundeAcc__9004FDDCF8608D98</RefKeyName>
+      <RefTableId>573245097</RefTableId>
+      <RefTableName>kundeAccount</RefTableName>
+    </foreign-key>
+    <index id="102" parent="83" name="PK__bestellu__AC521DC36B6CF793">
+      <Clustering>1</Clustering>
+      <ColNames>bes_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="103" parent="83" name="PK__bestellu__AC521DC36B6CF793">
+      <ColNames>bes_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.717</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.717</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>813245952</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK__bestellu__AC521DC36B6CF793</UnderlyingIndexName>
+    </key>
+    <column id="104" parent="84" name="bA_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1(6)</SequenceIdentity>
+    </column>
+    <column id="105" parent="84" name="bA_art_id">
+      <DataType>int|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="106" parent="84" name="bA_bes_id">
+      <DataType>int|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <foreign-key id="107" parent="84" name="FK__bestellun__bA_ar__3449B6E4">
+      <ColNames>bA_art_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.720</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.720</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>877246180</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>art_id</RefColNames>
+      <RefKeyName>PK__artikel__C4784F00DE06359C</RefKeyName>
+      <RefTableId>669245439</RefTableId>
+      <RefTableName>artikel</RefTableName>
+    </foreign-key>
+    <foreign-key id="108" parent="84" name="FK__bestellun__bA_be__353DDB1D">
+      <ColNames>bA_bes_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.720</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.720</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>893246237</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>bes_id</RefColNames>
+      <RefKeyName>PK__bestellu__AC521DC36B6CF793</RefKeyName>
+      <RefTableId>797245895</RefTableId>
+      <RefTableName>bestellung</RefTableName>
+    </foreign-key>
+    <index id="109" parent="84" name="PK__bestellu__2F65C58689D3D8BC">
+      <Clustering>1</Clustering>
+      <ColNames>bA_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="110" parent="84" name="PK__bestellu__2F65C58689D3D8BC">
+      <ColNames>bA_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.720</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.720</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>861246123</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK__bestellu__2F65C58689D3D8BC</UnderlyingIndexName>
+    </key>
+    <column id="111" parent="85" name="kat_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1(5)</SequenceIdentity>
+    </column>
+    <column id="112" parent="85" name="kat_name">
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <index id="113" parent="85" name="PK__kategori__EFC88BAA7016D916">
+      <Clustering>1</Clustering>
+      <ColNames>kat_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="114" parent="85" name="PK__kategori__EFC88BAA7016D916">
+      <ColNames>kat_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.707</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.707</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>653245382</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK__kategori__EFC88BAA7016D916</UnderlyingIndexName>
+    </key>
+    <column id="115" parent="86" name="kA_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1(7)</SequenceIdentity>
+    </column>
+    <column id="116" parent="86" name="username">
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="117" parent="86" name="kennwort">
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="118" parent="86" name="Lieferadresse">
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <index id="119" parent="86" name="PK__kundeAcc__9004FDDCF8608D98">
+      <Clustering>1</Clustering>
+      <ColNames>kA_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="120" parent="86" name="PK__kundeAcc__9004FDDCF8608D98">
+      <ColNames>kA_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.700</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.700</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>589245154</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK__kundeAcc__9004FDDCF8608D98</UnderlyingIndexName>
+    </key>
+    <column id="121" parent="87" name="vA_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1(4)</SequenceIdentity>
+    </column>
+    <column id="122" parent="87" name="username">
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="123" parent="87" name="kennwort">
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="124" parent="87" name="sitz">
+      <DataType>varchar(30 char)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <index id="125" parent="87" name="PK__verkaeuf__93769E0761890763">
+      <Clustering>1</Clustering>
+      <ColNames>vA_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="126" parent="87" name="PK__verkaeuf__93769E0761890763">
+      <ColNames>vA_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.703</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.703</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>621245268</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK__verkaeuf__93769E0761890763</UnderlyingIndexName>
+    </key>
+    <column id="127" parent="88" name="wKA_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1(7)</SequenceIdentity>
+    </column>
+    <column id="128" parent="88" name="war_art_id">
+      <DataType>int|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="129" parent="88" name="war_kA_id">
+      <DataType>int|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <foreign-key id="130" parent="88" name="FK__warenKorb__war_a__2D9CB955">
+      <ColNames>war_art_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.713</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.713</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>765245781</ObjectId>
+      <OnDelete>set-null</OnDelete>
+      <RefColNames>art_id</RefColNames>
+      <RefKeyName>PK__artikel__C4784F00DE06359C</RefKeyName>
+      <RefTableId>669245439</RefTableId>
+      <RefTableName>artikel</RefTableName>
+    </foreign-key>
+    <foreign-key id="131" parent="88" name="FK__warenKorb__war_k__2E90DD8E">
+      <ColNames>war_kA_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.717</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.717</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>781245838</ObjectId>
+      <OnDelete>set-null</OnDelete>
+      <RefColNames>kA_id</RefColNames>
+      <RefKeyName>PK__kundeAcc__9004FDDCF8608D98</RefKeyName>
+      <RefTableId>573245097</RefTableId>
+      <RefTableName>kundeAccount</RefTableName>
+    </foreign-key>
+    <index id="132" parent="88" name="PK__warenKor__EA81F54329FFAFD0">
+      <Clustering>1</Clustering>
+      <ColNames>wKA_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="133" parent="88" name="PK__warenKor__EA81F54329FFAFD0">
+      <ColNames>wKA_id</ColNames>
+      <CreatedTimestamp>2021-12-22.12:36:58.713</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-22.12:36:58.713</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>749245724</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK__warenKor__EA81F54329FFAFD0</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

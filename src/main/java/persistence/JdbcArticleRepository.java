@@ -14,32 +14,35 @@ import java.util.TreeSet;
 
 public record JdbcArticleRepository(Connection connection) implements ArticleRepositroy {
     @Override
-    public Article insert_into_store(Article Article) throws SQLException {
-        var sql = "insert into Article(art_name,art_price,art_Description,art_kat_id,art_vA_id) values (?,?,?,?,?)";
+    public Article insert_into_store(Article article) throws SQLException {
+        var sql = "insert into artikel(art_name,art_price,art_Description,art_kat_id,art_vA_id) values (?,?,?,?,?)";
 
+        System.out.println("okok");
+        System.out.println(article.getSort().getId());
+        System.out.println("jojo");
         try (var statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            statement.setString(1, Article.getName());
-            statement.setDouble(2, Article.getPrice());
-            statement.setString(3, Article.getDescription());
-            statement.setInt(4, Article.getSort().getId());
-            statement.setInt(5, Article.getSeller().getId());
+            statement.setString(1, article.getName());
+            statement.setDouble(2, article.getPrice());
+            statement.setString(3, article.getDescription());
+            statement.setInt(4, article.getSort().getId());
+            statement.setInt(5, article.getSeller().getId());
             statement.executeUpdate();
 
             var resultSet = statement.getGeneratedKeys();
             while (resultSet.next()) {
-                Article = new Article(resultSet.getInt(1), Article.getName(), Article.getPrice(),
-                        Article.getDescription(), Article.getSeller(), Article.getSort());
+                article = new Article(resultSet.getInt(1), article.getName(), article.getPrice(),
+                        article.getDescription(), article.getSeller(), article.getSort());
             }
         }
 
-        return Article;
+        return article;
 
     }
 
     @Override
     public void delete_from_store(Article Article) throws SQLException {
 
-        var sql = "delete from Article " +
+        var sql = "delete from artikel " +
                 " where art_id = ?";
 
         try (var statement = connection.prepareStatement(sql)) {
@@ -65,17 +68,17 @@ public record JdbcArticleRepository(Connection connection) implements ArticleRep
     }
 
     @Override
-    public SortedSet<Article> find_by_name(String name) throws SQLException {
+    public SortedSet<Article> find_by_name(Integer id) throws SQLException {
         SortedSet<Article> Article_set = new TreeSet<>();
-        var sql = "select * from Article " +
-                " inner join verkaueferAccount " +
-                " on verkaueferAccount.vA_id = artikel.art_vA_id " +
+        var sql = "select * from artikel " +
+                " inner join verkaeuferAccount " +
+                " on verkaeuferAccount.vA_id = artikel.art_vA_id " +
                 " inner join kategorie " +
                 " on kategorie.kat_id = artikel.art_vA_id " +
-                " where art_name like *?*";
+                " where art_id = ?";
 
         try (var statement = connection.prepareStatement(sql)) {
-            statement.setString(1, name);
+            statement.setInt(1, id);
             var resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Article_set.add(new Article(resultSet.getInt(1), resultSet.getString(2),
@@ -92,20 +95,20 @@ public record JdbcArticleRepository(Connection connection) implements ArticleRep
     @Override
     public List<Article> return_articles_by_category(Integer ka) throws SQLException {
         List<Article> ArticleList = new LinkedList<>();
-        var sql = "select * from Article " +
-                " inner join verkaueferAccount " +
-                " on verkaueferAccount.vA_id = artikel.art_vA_id " +
+        var sql = "select * from artikel " +
                 " inner join kategorie " +
-                " on kategorie.kat_id = artikel.art_vA_id " +
-                " where art_kat_id = ?";
+                " on kategorie.kat_id = artikel.art_kat_id" +
+                " inner join verkaeuferAccount " +
+                " on verkaeuferAccount.vA_id = artikel.art_vA_id " +
+                " where art_kat_id = ?  ";
 
 
         try (var statement = connection.prepareStatement(sql)) {
             statement.setInt(1, ka.intValue());
             var resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                ArticleList.add(new Article(resultSet.getInt(1), resultSet.getString(2),
-                        resultSet.getDouble(3), resultSet.getString(4)
+                ArticleList.add(new Article(resultSet.getInt("art_id"), resultSet.getString("art_name"),
+                        resultSet.getDouble("art_price"), resultSet.getString("art_Description")
                         , new SellerAccount(resultSet.getInt("art_vA_id"), resultSet.getString("username"),
                         resultSet.getString("kennwort"), resultSet.getString("sitz")),
                         new Sorts(resultSet.getInt("art_kat_id"), resultSet.getString("kat_name"))));
@@ -118,8 +121,8 @@ public record JdbcArticleRepository(Connection connection) implements ArticleRep
     @Override
     public SortedSet<Article> findAllfromThisSeller(SellerAccount sellerAccount) throws SQLException {
         var sql = "select * from artikel" +
-                " inner join verkaueferAccount " +
-                " on verkaueferAccount.vA_id = artikel.art_vA_id " +
+                " inner join verkaeuferAccount " +
+                " on verkaeuferAccount.vA_id = artikel.art_vA_id " +
                 " inner join kategorie " +
                 " on kategorie.kat_id = artikel.art_vA_id " +
                 " where art_vA_id = ?";

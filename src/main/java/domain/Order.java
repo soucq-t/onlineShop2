@@ -24,6 +24,11 @@ public class Order {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "BestellungID: " +
+                "id=" + id ;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -37,4 +42,6 @@ public class Order {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 }

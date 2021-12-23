@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-213.5744.223">
-    <data-source name="chen_onlineShop@IFSQL-03.htl-stp.if" uuid="6e33b835-63a8-4d9f-873c-e3bb9f7c7c2c">
+    <data-source name="chen_onlineShop@IFSQL-03.htl-stp.if" uuid="a018fe7e-f9bb-4271-94ba-770e2f68744d">
       <database-info product="Microsoft SQL Server" version="13.00.5865" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 9.4 for SQL Server" driver-version="9.4.0.0" dbms="MSSQL" exact-version="13.0.5865" exact-driver-version="9.4">
         <extra-name-characters>$#@</extra-name-characters>
         <identifier-quote-string>&quot;</identifier-quote-string>
@@ -11,8 +11,8 @@
       <user-name>sa</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="database" qname="chen_onlineShop">
-            <node kind="schema" negative="1" />
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
           </node>
         </introspection-scope>
       </schema-mapping>

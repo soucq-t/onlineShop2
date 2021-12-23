@@ -1,8 +1,10 @@
 package domain;
 
 import java.util.Objects;
+
 import lombok.Getter;
 import lombok.Setter;
+
 public class Sorts {
     @Setter
     @Getter
@@ -24,7 +26,10 @@ public class Sorts {
         this(null, name);
     }
 
-
+    @Override
+    public String toString() {
+        return name;
+    }
 
     @Override
     public boolean equals(Object o) {

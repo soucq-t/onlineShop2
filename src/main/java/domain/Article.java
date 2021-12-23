@@ -58,6 +58,13 @@ public class Article implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return  Comparator.comparing(Article::getName).thenComparing(Article::getPrice).compare(this, (Article) o);
+        return Comparator.comparing(Article::getName).thenComparing(Article::getPrice).compare(this, (Article) o);
+    }
+
+    @Override
+    public String toString() {
+        return name + " " +
+                        "  " + price +
+                        "€,  description: " + description + "  " + "Sorte: "+sort ;
     }
 }

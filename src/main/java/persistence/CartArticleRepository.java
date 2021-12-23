@@ -18,7 +18,7 @@ public interface CartArticleRepository {
     void delete(Integer artikel) throws SQLException;
 
 
-    SortedSet<CartArticle> getAllCartArticleFromThisBuyer(BuyerAccount buyerAccount) throws SQLException;
+    List<CartArticle> getAllCartArticleFromThisBuyer(BuyerAccount buyerAccount) throws SQLException;
 
 
 

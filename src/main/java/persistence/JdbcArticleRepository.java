@@ -15,11 +15,11 @@ import java.util.TreeSet;
 public record JdbcArticleRepository(Connection connection) implements ArticleRepositroy {
     @Override
     public Article insert_into_store(Article article) throws SQLException {
+        System.out.println("okkokoko"+article.toString());
+
         var sql = "insert into artikel(art_name,art_price,art_Description,art_kat_id,art_vA_id) values (?,?,?,?,?)";
 
-        System.out.println("okok");
         System.out.println(article.getSort().getId());
-        System.out.println("jojo");
         try (var statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, article.getName());
             statement.setDouble(2, article.getPrice());
@@ -27,6 +27,7 @@ public record JdbcArticleRepository(Connection connection) implements ArticleRep
             statement.setInt(4, article.getSort().getId());
             statement.setInt(5, article.getSeller().getId());
             statement.executeUpdate();
+
 
             var resultSet = statement.getGeneratedKeys();
             while (resultSet.next()) {
@@ -68,7 +69,7 @@ public record JdbcArticleRepository(Connection connection) implements ArticleRep
     }
 
     @Override
-    public SortedSet<Article> find_by_name(Integer id) throws SQLException {
+    public SortedSet<Article> find_by_Name(Integer id) throws SQLException {
         SortedSet<Article> Article_set = new TreeSet<>();
         var sql = "select * from artikel " +
                 " inner join verkaeuferAccount " +

@@ -70,8 +70,8 @@ public class JdbcArtikelRepositoryTest {
             article = articleRepository.insert_into_store(article);
             SortedSet<Article> articleSortedSet = articleRepository.findAllfromThisSeller(sellerAccount);
             assertTrue(articleSortedSet.contains(article));
-
         }
+
     }
 
     @Nested
@@ -92,6 +92,22 @@ public class JdbcArtikelRepositoryTest {
 
     @Nested
     class return_articles_by_category {
+        @Test
+        void contains_article_in_this_category() throws SQLException {
+
+            var article = new Article("Stift",
+                    3.2,
+                    "ff",
+                    sellerRepository.findById(1),
+                    sortsRepositroy.findByID(1));
+
+
+            article = articleRepository.insert_into_store(article);
+
+            assertTrue(articleRepository.return_articles_by_category(1).contains(article));
+
+        }
+
 
     }
 

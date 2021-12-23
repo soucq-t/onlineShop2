@@ -56,7 +56,7 @@ public class OnlineShopController implements Initializable {
     private Tab tabVerkaeufer;
 
     @FXML
-    private ListView<Order> lvLieferungen;
+    private ListView<Order> lvLieferung;
 
     @FXML
     private ListView<?> lvSortiment;
@@ -89,7 +89,7 @@ public class OnlineShopController implements Initializable {
     private Button btnAddArticle;
 
     @FXML
-    private Button btnDelCart;
+    private Button btnDelArt;
 
     @FXML
     private Button btnLieferungDetails;
@@ -120,25 +120,48 @@ public class OnlineShopController implements Initializable {
                 buyerRepository.save(new BuyerAccount("AdminUser", "passwort"));
             }
             buyerAccount = buyerRepository.findById(1);
+            if (sellerRepository.findAll() == null) {
+                sellerRepository.save(new SellerAccount("AdminSeller", "passwort", "Moskau 1"));
+            }
+            sellerAccount = sellerRepository.findById(1);
+
         } catch (SQLException e) {
-            System.out.println("SetUp Fehler");
+            System.out.println("SetUp Fehlere");
         }
 
         try {
+
             itemsSorts = FXCollections.observableArrayList(sortsRepositroy.findAll());
             cbKategorie.setItems(itemsSorts);
+            cbKategorie.getSelectionModel().select(0);
+            cbKategorie.setOnAction(actionEvent -> {
+                try {
+                    itemsArticles = FXCollections.observableArrayList(articleRepositroy.return_articles_by_category(cbKategorie.getSelectionModel().getSelectedItem().getId()));
+                    lvArticles.setItems(itemsArticles);
 
-            itemsArticles = FXCollections.observableArrayList(articleRepositroy.return_articles_by_category(cbArticleSort.getSelectionModel().getSelectedItem().getId()));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            cbArticleSort.setItems(itemsSorts);
+            cbArticleSort.getSelectionModel().select(0);
+
+            System.out.println("1");
+            itemsArticles = FXCollections.observableArrayList(articleRepositroy.return_articles_by_category(cbKategorie.getSelectionModel().getSelectedItem().getId()));
             lvArticles.setItems(itemsArticles);
 
+            System.out.println("12");
             itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.getAllCartArticleFromThisBuyer(buyerAccount));
             lvCartArticles.setItems(itemsCartArcticles);
+            System.out.println("13");
 
             itemsOrders = FXCollections.observableArrayList(orderRepositroy.findAllFromThisBuyer(buyerAccount));
             lvOrders.setItems(itemsOrders);
+            System.out.println("14");
 
             itemsLieferung = FXCollections.observableArrayList(orderRepositroy.findAllFromThisSeller(sellerAccount));
-            lvLieferungen.setItems(itemsLieferung);
+            lvLieferung.setItems(itemsLieferung);
+            System.out.println("15");
 
             itemsSellerArticles = FXCollections.observableArrayList(articleRepositroy.findAllfromThisSeller(sellerAccount));
             lvSellingArticles.setItems(itemsSellerArticles);
@@ -151,7 +174,13 @@ public class OnlineShopController implements Initializable {
         lvCartArticles.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         lvOrders.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         btnAddToCart.setOnAction(actionEvent -> addArticleToCart());
-        btnDeleteCartArticle.setOnAction(actionEvent -> deleteCartArticle());
+        btnDeleteCartArticle.setOnAction(actionEvent -> {
+            try {
+                deleteCartArticle();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
         btnCartArticleDetails.setOnAction(actionEvent -> cartArticleDetails());
         btnPayCartArticle.setOnAction(actionEvent -> payCartArticle());
         btnOrderDetails.setOnAction(actionEvent -> orderDetails(1));
@@ -163,6 +192,28 @@ public class OnlineShopController implements Initializable {
                 e.printStackTrace();
             }
         });
+        btnDelArt.setOnAction(actionEvent -> {
+            try {
+                delArt();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void delArt() throws SQLException {
+        if (lvSellingArticles.getSelectionModel().getSelectedItems() != null) {
+            ObservableList<Article> allSelectedArticles = lvSellingArticles.getSelectionModel().getSelectedItems();
+            for (Article article : allSelectedArticles) {
+                try {
+                    articleRepositroy.delete_from_store(article);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            itemsArticles = FXCollections.observableArrayList(articleRepositroy.findAllfromThisSeller(sellerAccount));
+            lvSellingArticles.setItems(itemsArticles);
+        }
     }
 
     private void addArticle() throws SQLException {
@@ -172,18 +223,25 @@ public class OnlineShopController implements Initializable {
                 !cbArticleSort.getItems().isEmpty()) {
 
             articleRepositroy.insert_into_store(new Article(tfArticleName.getText(), Double.parseDouble(tfArticlePrice.getText()),
-                    tfArticleDescript.getText(), sellerAccount, new Sorts(cbArticleSort.getSelectionModel().getSelectedItem().toString())));
-            itemsSellerArticles=FXCollections.observableArrayList(articleRepositroy.findAllfromThisSeller(sellerAccount));
+                    tfArticleDescript.getText(), sellerAccount, cbArticleSort.getSelectionModel().getSelectedItem()));
+            tfArticleName.clear();
+            tfArticleDescript.clear();
+            tfArticlePrice.clear();
+            itemsSellerArticles = FXCollections.observableArrayList(articleRepositroy.findAllfromThisSeller(sellerAccount));
+            lvSellingArticles.setItems(itemsSellerArticles);
         }
     }
 
     private void orderDetails(int i) {
         Alert alert;
         int anzahlItems = 0;
-        if (i == 0) {
+        Order order = null;
+        if (i == 1) {
             anzahlItems = lvOrders.getSelectionModel().getSelectedItems().size();
-        } else if (i == 0) {
-            anzahlItems = lvLieferungen.getSelectionModel().getSelectedItems().size();
+            order = lvOrders.getSelectionModel().getSelectedItem();
+        } else if (i == 2) {
+            anzahlItems = lvLieferung.getSelectionModel().getSelectedItems().size();
+            order = lvLieferung.getSelectionModel().getSelectedItem();
         }
         if (anzahlItems != 1) {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -191,22 +249,21 @@ public class OnlineShopController implements Initializable {
             alert.setHeaderText("Bitte Nur eine Bestellung auswählen");
             alert.showAndWait();
         } else {
+            System.out.println(anzahlItems);
             try {
-                ResultSet allInformations = orderRepositroy.findAllInformationFromThisOrder(lvOrders.getSelectionModel().getSelectedItem().getId().intValue());
+                List<Article> allArticleInThisOrder = orderRepositroy.findAllInformationFromThisOrder(order.getId().intValue());
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 double preisSumme = 0;
-                int anzahl = 0;
                 alert.setTitle("Bestellung Details");
                 StringBuilder stringBuilder = new StringBuilder();
-                alert.setHeaderText("Bestellungsnummer: " + allInformations.getString("bes_id"));
-                while (allInformations.next()) {
-                    stringBuilder.append("Artikel Name: " + allInformations.getString("art_name" + '\n' +
-                            "Preis: " + allInformations.getDouble("art_price") + '\n'));
-                    preisSumme += allInformations.getDouble("art_price");
-                    anzahl++;
+                alert.setHeaderText("Bestellungsnummer: " + order.getId());
+                for (Article article : allArticleInThisOrder) {
+                    stringBuilder.append("Artikel Name: " + article.getName() +
+                            "Preis: " + article.getPrice() + '\n');
+                    preisSumme += article.getPrice();
                 }
-                stringBuilder.append("Anzahl der Artikeln: " + anzahl);
-                stringBuilder.append("Summe: " + preisSumme);
+                stringBuilder.append("\nAnzahl der Artikeln: " + allArticleInThisOrder.size());
+                stringBuilder.append("\nSumme: " + preisSumme);
                 alert.setContentText(stringBuilder.toString());
                 alert.showAndWait();
             } catch (SQLException e) {
@@ -222,10 +279,15 @@ public class OnlineShopController implements Initializable {
                 Order order = orderRepositroy.buy(buyerAccount);
                 for (CartArticle article : allSelectedArticles) {
                     orderArticelRepository.save(new OrderArticel(article.getArticle(), order));
-                    cartArctileRepository.delete(article.getId());
+                    System.out.println("okkk");
+                    cartArctileRepository.delete(article.getArticle().getId());
                 }
+                itemsLieferung = FXCollections.observableArrayList(orderRepositroy.findAllFromThisSeller(sellerAccount));
+                lvLieferung.setItems(itemsLieferung);
                 itemsOrders = FXCollections.observableArrayList(orderRepositroy.findAllFromThisBuyer(buyerAccount));
+                lvOrders.setItems(itemsOrders);
                 itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.getAllCartArticleFromThisBuyer(buyerAccount));
+                lvCartArticles.setItems(itemsCartArcticles);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -241,32 +303,32 @@ public class OnlineShopController implements Initializable {
             alert.setHeaderText("Bitte Nur ein Artikel auswählen");
             alert.showAndWait();
         } else {
-            try {
-                ResultSet allInformations = cartArctileRepository.getAllInformationFromThisArticle(lvCartArticles.getSelectionModel().getSelectedItem().getId().intValue());
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Artikel Details");
-                alert.setHeaderText("Verkäufer: " + allInformations.getString("username"));
-                alert.setContentText("Name: " + allInformations.getString("art_name" + '\n' +
-                        "Preis: " + allInformations.getDouble("art_price") + '\n' +
-                        "Description: " + allInformations.getString("art_Description")));
-                alert.showAndWait();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            System.out.println("ok1");
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Artikel Details");
+            alert.setHeaderText("Verkäufer: " + lvCartArticles.getSelectionModel().getSelectedItem().getArticle().getSeller().getId());
+            alert.setContentText("Name: " + lvCartArticles.getSelectionModel().getSelectedItem().getArticle().getName() +
+                    "\nPreis: " +
+                    lvCartArticles.getSelectionModel().getSelectedItem().getArticle().getPrice() +
+                    "\nDescription: " +
+                    lvCartArticles.getSelectionModel().getSelectedItem().getArticle().getDescription());
+            alert.showAndWait();
+
         }
     }
 
-    private void deleteCartArticle() {
+    private void deleteCartArticle() throws SQLException {
         if (lvCartArticles.getSelectionModel().getSelectedItems() != null) {
             ObservableList<CartArticle> allSelectedArticles = lvCartArticles.getSelectionModel().getSelectedItems();
             for (CartArticle article : allSelectedArticles) {
                 try {
-                    cartArctileRepository.delete(article.getId().intValue());
-                    itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.getAllCartArticleFromThisBuyer(buyerAccount));
+                    cartArctileRepository.delete(article.getArticle().getId());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
+            itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.getAllCartArticleFromThisBuyer(buyerAccount));
+            lvCartArticles.setItems(itemsCartArcticles);
         }
     }
 
@@ -277,8 +339,11 @@ public class OnlineShopController implements Initializable {
             ObservableList<Article> allSelectedArticles = lvArticles.getSelectionModel().getSelectedItems();
             for (Article article : allSelectedArticles) {
                 try {
+                    System.out.println(article.toString());
+                    System.out.println(buyerAccount);
                     allSavedArticles.add(cartArctileRepository.add_to_basket(new CartArticle(article, buyerAccount)));
                     itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.getAllCartArticleFromThisBuyer(buyerAccount));
+                    lvCartArticles.setItems(itemsCartArcticles);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -291,8 +356,23 @@ public class OnlineShopController implements Initializable {
         var properties = new Properties();
         properties.put("user", "sa");
         properties.put("password", "");
-        var connection = DriverManager.getConnection("jdbc:sqlserver://IFSQL-03;database=chen_onlineShop", properties);
+        var connection = DriverManager.getConnection("""
+                jdbc:sqlserver://IFSQL-03.htl-stp.if;database=chen_onlineShop
+                """, properties);
         //   this.articleRepositroy = new ArticleRepository(connection);
+        this.articleRepositroy = new JdbcArticleRepository(connection);
+        this.buyerRepository = new JdbcBuyerRepository(connection);
+        ;
+        this.sellerRepository = new JdbcSellerRepository(connection);
+        ;
+        this.cartArctileRepository = new JdbcCartArticleRepository(connection);
+        ;
+        this.orderRepositroy = new JdbcOrderRepository(connection);
+        ;
+        this.orderArticelRepository = new JdbcOrderArticleRepository(connection);
+        ;
+        this.sortsRepositroy = new JdbcSortsRepository(connection);
+        ;
     }
 }
 

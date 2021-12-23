@@ -16,7 +16,7 @@ public interface ArticleRepositroy {
 
     void update(Article artikel) throws SQLException;
 
-    SortedSet<Article> find_by_name(String name) throws SQLException;
+    SortedSet<Article> find_by_name(Integer id) throws SQLException;
 
     List<Article> return_articles_by_category(Integer ka) throws SQLException;
 

@@ -11,7 +11,7 @@ public class OnlineShop extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root= FXMLLoader.load(getClass().getResource("/OnlineShop.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("/onlineShop.fxml"));
         Scene scene=new Scene(root);
         stage.setScene(scene);
         stage.setTitle("OnlineShop");

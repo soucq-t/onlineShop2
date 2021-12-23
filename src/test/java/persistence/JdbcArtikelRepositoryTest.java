@@ -8,13 +8,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import persistence.setup.TestConnectionSupplier;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.SortedSet;
-
 import static org.junit.Assert.*;
+
 
 public class JdbcArtikelRepositoryTest {
 
@@ -47,7 +47,7 @@ public class JdbcArtikelRepositoryTest {
                     new Sorts(1,"cool"));
             article = articleRepository.insert_into_store(article);
 
-            assertTrue(articleRepository.find_by_name("Stift").contains(article));
+            assertTrue(articleRepository.find_by_name(article.getId()).contains(article));
         }
 
     }

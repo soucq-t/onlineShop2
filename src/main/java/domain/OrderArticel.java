@@ -21,7 +21,14 @@ public class OrderArticel implements Comparable {
         this.order = order;
     }
 
-
+    @Override
+    public String toString() {
+        return "OrderArticel{" +
+                "id=" + id +
+                ", article=" + article +
+                ", order=" + order +
+                '}';
+    }
 
     public OrderArticel(Article article, Order order) {
         this(null,article,order);

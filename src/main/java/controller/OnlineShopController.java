@@ -146,22 +146,17 @@ public class OnlineShopController implements Initializable {
             cbArticleSort.setItems(itemsSorts);
             cbArticleSort.getSelectionModel().select(0);
 
-            System.out.println("1");
             itemsArticles = FXCollections.observableArrayList(articleRepositroy.return_articles_by_category(cbKategorie.getSelectionModel().getSelectedItem().getId()));
             lvArticles.setItems(itemsArticles);
 
-            System.out.println("12");
             itemsCartArcticles = FXCollections.observableArrayList(cartArctileRepository.getAllCartArticleFromThisBuyer(buyerAccount));
             lvCartArticles.setItems(itemsCartArcticles);
-            System.out.println("13");
 
             itemsOrders = FXCollections.observableArrayList(orderRepositroy.findAllFromThisBuyer(buyerAccount));
             lvOrders.setItems(itemsOrders);
-            System.out.println("14");
 
             itemsLieferung = FXCollections.observableArrayList(orderRepositroy.findAllFromThisSeller(sellerAccount));
             lvLieferung.setItems(itemsLieferung);
-            System.out.println("15");
 
             itemsSellerArticles = FXCollections.observableArrayList(articleRepositroy.findAllfromThisSeller(sellerAccount));
             lvSellingArticles.setItems(itemsSellerArticles);
@@ -227,6 +222,8 @@ public class OnlineShopController implements Initializable {
             tfArticleName.clear();
             tfArticleDescript.clear();
             tfArticlePrice.clear();
+            itemsArticles = FXCollections.observableArrayList(articleRepositroy.return_articles_by_category(cbArticleSort.getSelectionModel().getSelectedItem().getId()));
+            lvArticles.setItems(itemsArticles);
             itemsSellerArticles = FXCollections.observableArrayList(articleRepositroy.findAllfromThisSeller(sellerAccount));
             lvSellingArticles.setItems(itemsSellerArticles);
         }

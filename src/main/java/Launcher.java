@@ -6,3 +6,4 @@ public class Launcher {
         Application.launch(OnlineShop.class,args);
     }
 }
+

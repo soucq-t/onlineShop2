@@ -11,7 +11,6 @@ import lombok.Setter;
 
 public class Article implements Comparable {
     @Getter
-    @Setter
     private final Integer id;
     @Getter
     @Setter
@@ -23,10 +22,8 @@ public class Article implements Comparable {
     @Setter
     private String description;
     @Getter
-    @Setter
     private final SellerAccount seller;
     @Getter
-    @Setter
     private final Sorts sort;
 
     public Article(Integer id, String name, double preis, String description, SellerAccount seller, Sorts sort) {

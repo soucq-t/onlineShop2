@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-public record JdbcSellerRepository(Connection connection) implements SellerRepository{
+public record JdbcSellerRepository(Connection connection) implements SellerRepository {
     @Override
     public SellerAccount findById(Integer id) throws SQLException {
         String sql = """
@@ -17,15 +17,17 @@ public record JdbcSellerRepository(Connection connection) implements SellerRepos
                 from verkaeuferAccount
                 where vA_id=?
                 """;
+        SellerAccount sellerAccount = null;
         try (var statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id);
             var resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                return new SellerAccount(resultSet.getInt("vA_id"),resultSet.getString("username"), resultSet.getString("kennwort"),resultSet.getString("sitz"));
+                sellerAccount = new SellerAccount(resultSet.getInt("vA_id"), resultSet.getString("username"), resultSet.getString("kennwort"), resultSet.getString("sitz"));
+                return sellerAccount;
             }
         }
 
-        return null;
+        return sellerAccount;
     }
 
     @Override
@@ -38,7 +40,7 @@ public record JdbcSellerRepository(Connection connection) implements SellerRepos
             var resultSet = statement.executeQuery();
             List<SellerAccount> list = new LinkedList<>();
             while (resultSet.next()) {
-                list.add(new SellerAccount(resultSet.getInt("vA_id"), resultSet.getString("username"), resultSet.getString("kennwort"),resultSet.getString("sitz")));
+                list.add(new SellerAccount(resultSet.getInt("vA_id"), resultSet.getString("username"), resultSet.getString("kennwort"), resultSet.getString("sitz")));
             }
             return list;
         }
@@ -46,7 +48,7 @@ public record JdbcSellerRepository(Connection connection) implements SellerRepos
 
     @Override
     public SellerAccount save(SellerAccount seller) throws SQLException {
-        System.out.println("dlkajdlkwajdlkawd");
+        SellerAccount sellerAccount = null;
         var sql = "Insert into verkaeuferAccount(username,kennwort,Lieferadresse) values (?,?,?)";
         try (var statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, seller.getUsername());
@@ -55,12 +57,14 @@ public record JdbcSellerRepository(Connection connection) implements SellerRepos
             statement.setString(3, "Moskau strasse 1");
             statement.executeUpdate();
             System.out.println("dawdwad");
-            System.out.println("dawdaw"+seller.toString());
-            if(statement.getGeneratedKeys().next()){
-                return new SellerAccount(statement.getGeneratedKeys().getInt("vA_id"), statement.getGeneratedKeys().getString("username"), statement.getGeneratedKeys().getString("kennwort"),statement.getGeneratedKeys().getString("sitz"));
+            System.out.println("dawdaw" + seller.toString());
+            if (statement.getGeneratedKeys().next()) {
+
+                sellerAccount = new SellerAccount(statement.getGeneratedKeys().getInt("vA_id"), statement.getGeneratedKeys().getString("username"), statement.getGeneratedKeys().getString("kennwort"), statement.getGeneratedKeys().getString("sitz"));
+                return sellerAccount;
             }
         }
-        return null;
+        return sellerAccount;
     }
 
     @Override

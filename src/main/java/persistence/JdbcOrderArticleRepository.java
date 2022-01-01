@@ -58,10 +58,7 @@ public record JdbcOrderArticleRepository(Connection connection) implements Order
 
     @Override
     public OrderArticel save(OrderArticel orderArticle) throws SQLException {
-        System.out.println(orderArticle);
         var sql = "insert into bestellungsArtikel(bA_art_id,bA_bes_id) values (?,?)";
-        System.out.println(orderArticle.getArticle().getId());
-        System.out.println(orderArticle.getOrder().getId());
         try (var statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setInt(1, orderArticle.getArticle().getId());
             statement.setInt(2, orderArticle.getOrder().getId());

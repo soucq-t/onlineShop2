@@ -17,15 +17,18 @@ public record JdbcBuyerRepository(Connection connection) implements BuyerReposit
                 from kundeAccount
                 where kA_id=?
                 """;
+        BuyerAccount buyerAccount = null;
         try (var statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id);
             var resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                return new BuyerAccount(resultSet.getInt("kA_id"), resultSet.getString("username"), resultSet.getString("kennwort"));
+
+                buyerAccount = new BuyerAccount(resultSet.getInt("kA_id"), resultSet.getString("username"), resultSet.getString("kennwort"));
+                return buyerAccount;
             }
         }
 
-        return null;
+        return buyerAccount;
     }
 
     @Override
@@ -47,18 +50,21 @@ public record JdbcBuyerRepository(Connection connection) implements BuyerReposit
     @Override
     public BuyerAccount save(BuyerAccount buyer) throws SQLException {
         var sql = "Insert into kundeAccount(username,kennwort,Lieferadresse) values (?,?,?)";
+        BuyerAccount buyerAccount = null;
         try (var statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, buyer.getUsername());
             statement.setString(2, buyer.getKennwort());
             statement.setString(3, "Moskau strasse 1");
             statement.executeUpdate();
-            if(statement.getGeneratedKeys().next()){
-                return new BuyerAccount(statement.getGeneratedKeys().getInt("kA_id"),
+            if (statement.getGeneratedKeys().next()) {
+                buyerAccount = new BuyerAccount(statement.getGeneratedKeys().getInt("kA_id"),
                         statement.getGeneratedKeys().getString("username"),
                         statement.getGeneratedKeys().getString("kennwort"));
+                return buyerAccount;
+
             }
         }
-        return null;
+        return buyerAccount;
     }
 
     @Override

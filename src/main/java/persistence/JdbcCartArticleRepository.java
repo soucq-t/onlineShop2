@@ -25,7 +25,6 @@ public record JdbcCartArticleRepository(Connection connection) implements CartAr
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             resultSet.next();
-            System.out.println(resultSet.getRow());
             return resultSet;
         }
 
